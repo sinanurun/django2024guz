@@ -1,12 +1,14 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.safestring import mark_safe
+
 
 # Create your models here.
 
 class Category(models.Model):
     STATUS = (('True', 'Evet'),('False', 'Hayir'))
-    title = models.CharField(max_length=30)
-    keywords = models.CharField(blank=True, max_length=250)
+    title = models.CharField(max_length=30, verbose_name='Başlık')
+    keywords = models.CharField(blank=True, max_length=250, verbose_name='Anahtar Kelimeler')
     description = models.CharField(blank=True, max_length=250)
     image = models.ImageField(blank=True, upload_to='images/')
     status = models.CharField(max_length=10, choices=STATUS)
@@ -15,6 +17,10 @@ class Category(models.Model):
                                related_name='children', on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Kategori'
+        verbose_name_plural = 'Kategoriler'
 
     def __str__(self):
         return self.title
@@ -36,6 +42,12 @@ class Product(models.Model):
     update_at=models.DateTimeField(auto_now=True)
     slug=models.SlugField(null=False,unique=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
+
+
+    def image_tag(self):
+        return mark_safe('<img src="{}" width="50"/>'.format(self.image.url))
+
+    image_tag.short_description = 'Image'
 
     def __str__(self):
         return self.title

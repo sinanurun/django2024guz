@@ -13,9 +13,9 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['title','price', 'amount', 'status']
+    list_display = ['title','price','image_tag', 'amount', 'status']
     list_filter = ['status','category']
-    # readonly_fields = ['price']
+    readonly_fields = ['image_tag']
     prepopulated_fields = {"slug": ("category","title")}
 
 
