@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #oluşturulan uygulamalar
     'home.apps.HomeConfig',
+    'product.apps.ProductConfig',
     #yüklenen eklentiler
 ]
 
