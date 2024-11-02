@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from product.models import Category, Product
+from product.models import Category, Product, Images
 
 
 # Register your models here.
@@ -33,3 +33,9 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Product, ProductAdmin)
+
+class ImageAdmin(admin.ModelAdmin):
+    list_display = ['title', 'product', 'image_tag']
+    readonly_fields = ['image_tag']
+
+admin.site.register(Images, ImageAdmin)

@@ -8,6 +8,7 @@ def index(request):
     metin = "BTK Kursiyerleri"
     # return HttpResponse("Hello, %s. <br>You're at the" % metin)
     # return HttpResponse(metin)
-    context = {"sayfa":"iletisim"}
+    context = {"sayfa":"home"}
+
     # return render(request, 'index.html',context)
     return render(request, 'index.html', context)
