@@ -50,9 +50,11 @@ class Product(models.Model):
 
     image_tag.short_description = 'Image'
 
+# admin tarafında ürün düzenlerken ürün resminin görünmesi için
     def image_preview(self):
         if self.image:
-            return format_html('<img src="{}" style="width: 300px; height: auto;" />', self.image.url)
+            return format_html('<img src="{}" '
+              'style="width: 300px; height: auto;" />', self.image.url)
         return '-'
 
     image_preview.short_description = 'Current Image'
