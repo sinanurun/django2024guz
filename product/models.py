@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
 
@@ -48,6 +49,13 @@ class Product(models.Model):
         return mark_safe('<img src="{}" width="50"/>'.format(self.image.url))
 
     image_tag.short_description = 'Image'
+
+    def image_preview(self):
+        if self.image:
+            return format_html('<img src="{}" style="width: 300px; height: auto;" />', self.image.url)
+        return '-'
+
+    image_preview.short_description = 'Current Image'
 
     def __str__(self):
         return self.title

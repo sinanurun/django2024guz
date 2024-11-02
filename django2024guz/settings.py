@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     #oluşturulan uygulamalar
     'home.apps.HomeConfig',
     'product.apps.ProductConfig',
+    'order.apps.OrderConfig',
     #yüklenen eklentiler
 ]
 
