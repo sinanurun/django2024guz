@@ -14,6 +14,13 @@ def index(request):
     # return HttpResponse(metin)
     context = {"sayfa":"home",
                'settings':settings}
-
-    # return render(request, 'index.html',context)
     return render(request, 'index.html', context)
+
+def contact(request):
+    settings = Setings.objects.get(pk=1)
+    metin = "BTK Kursiyerleri"
+    # return HttpResponse("Hello, %s. <br>You're at the" % metin)
+    # return HttpResponse(metin)
+    context = {"sayfa":"Contact - İletişim",
+               'settings':settings}
+    return render(request, 'contact.html', context)
