@@ -3,6 +3,11 @@ from django.utils.html import format_html
 
 from product.models import Category, Product, Images
 
+# resim galerisi oluşturmak için inline yapı
+class ProductImagesInline(admin.TabularInline):
+    model = Images
+    extra = 5
+    readonly_fields = ('image_tag',)
 
 # Register your models here.
 class CategoryAdmin(admin.ModelAdmin):
@@ -29,6 +34,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['title','price','image_tag','image_preview', 'amount', 'status']
     list_filter = ['status','category']
     readonly_fields = ['image_preview']
+    inlines = [ProductImagesInline]
     prepopulated_fields = {"slug": ("category","title")}
 
 
@@ -36,6 +42,6 @@ admin.site.register(Product, ProductAdmin)
 
 class ImageAdmin(admin.ModelAdmin):
     list_display = ['title', 'product', 'image_tag']
-    readonly_fields = ['image_tag']
+    readonly_fields = ['image_tag',]
 
 admin.site.register(Images, ImageAdmin)
