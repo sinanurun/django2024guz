@@ -62,7 +62,7 @@ class CategoryAdmin2(DraggableMPTTAdmin):
     def related_products_cumulative_count(self, instance):
         return instance.products_cumulative_count
     related_products_cumulative_count.short_description = 'Related products (in tree)'
-    pass
+
 
 admin.site.register(Category, CategoryAdmin2)
 
