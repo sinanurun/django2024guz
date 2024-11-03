@@ -31,8 +31,13 @@
         <div class="row px-xl-5">
             <div class="col-lg-7 mb-5">
                 <div class="contact-form">
-                    <div id="success"></div>
-                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+          
+                    {% if messages %}
+                        {% for message in messages %}
+                    <div id="success">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate" method="post">
                         {% csrf_token %}
                         <div class="control-group">
                            {{ form.name }}
