@@ -34,7 +34,7 @@
           
                     {% if messages %}
                         {% for message in messages %}
-                    <div id="success">{{ message }}</div>
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
                         {% endfor %}
                     {% endif %}
                     <form name="sentMessage" id="contactForm" novalidate="novalidate" method="post">
