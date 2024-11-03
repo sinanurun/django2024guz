@@ -4,12 +4,16 @@ from django.shortcuts import render
 
 from home.forms import ContactForm
 from home.models import Setings, ContactFormMessage
+from product.models import Product
 
 
 # Create your views here.
 
 def index(request):
-    context = {"sayfa": "home"}
+    slider = Product.objects.filter(Product.status == 'True').order_by('?')[:4]
+    # trandy_product = Product.objects.order_by('viewcount')[:8]
+    context = {"sayfa": "home",
+               "slider": slider}
     return render(request, 'index.html', context)
 
 

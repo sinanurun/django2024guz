@@ -53,6 +53,7 @@ class Product(models.Model):
     update_at=models.DateTimeField(auto_now=True)
     slug=models.SlugField(null=False,unique=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
+    viewcount = models.IntegerField(default=0)
 
 
     def image_tag(self):
