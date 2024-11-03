@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from home.forms import ContactForm
 from home.models import Setings
 
 
@@ -21,8 +22,10 @@ def contact(request):
     metin = "BTK Kursiyerleri"
     # return HttpResponse("Hello, %s. <br>You're at the" % metin)
     # return HttpResponse(metin)
+    form = ContactForm()
     context = {"sayfa": "Contact - İletişim",
-               'settings': settings}
+               'settings': settings,
+               'form':form}
     return render(request, 'contact.html', context)
 
 
