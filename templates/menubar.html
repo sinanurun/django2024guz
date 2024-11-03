@@ -24,7 +24,57 @@
                                 <a href="" class="dropdown-item">Baby's Dresses</a>
                             </div>
                         </div>
-                        <a href="" class="nav-item nav-link">Shirts</a>
+{#                        {% for category in categories %}#}
+{#                        <a href="" class="nav-item nav-link">{{ category }}</a>#}
+{#                        {% endfor %}#}
+{##}
+{#                    {% for category in categories %}#}
+{#        <li>#}
+{#            <a href="">{{ category.title }}</a>#}
+{##}
+{#            {% if category.children.all %}#}
+{#                <ul class="submenu">#}
+{#                    {% for subcategory in category.children.all %}#}
+{#                        <li>#}
+{#                            <a href="" class="nav-item nav-link">{{ subcategory.title }}</a>#}
+{#                        </li>#}
+{#                    {% endfor %}#}
+{#                </ul>#}
+{#            {% endif %}#}
+{#        </li>#}
+{#    {% endfor %}#}
+{#                    <div class="nav-item dropdown">#}
+{#                            <a href="#" class="nav-link" data-toggle="dropdown">Dresses <i class="fa fa-angle-down float-right mt-1"></i></a>#}
+{#                            <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">#}
+{#                                <a href="" class="dropdown-item">Men's Dresses</a>#}
+{#                                <a href="" class="dropdown-item">Women's Dresses</a>#}
+{#                                <a href="" class="dropdown-item">Baby's Dresses</a>#}
+{#                            </div>#}
+{#                        </div>#}
+
+{#                    {% for category in categories %}#}
+{#        {% if category.children.exists %}#}
+{#            <!-- Ana kategoriler dropdown menü ile -->#}
+{#            <div class="nav-item dropdown">#}
+{#                <a href="" class="nav-link" data-toggle="dropdown">#}
+{#                    {{ category.title }} <i class="fa fa-angle-down float-right mt-1"></i>#}
+{#                </a>#}
+{#                <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">#}
+{#                    {% for subcategory in category.children.all %}#}
+{#                        <a href="" class="dropdown-item">#}
+{#                            {{ subcategory.title }}#}
+{#                        </a>#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#            </div>#}
+{#        {% else %}#}
+{#            <!-- Alt kategorisi olmayan ana kategoriler doğrudan link -->#}
+{#            <a href="" class="nav-item nav-link">#}
+{#                {{ category.title }}#}
+{#            </a>#}
+{#        {% endif %}#}
+{#    {% endfor %}#}
+
                         <a href="" class="nav-item nav-link">Jeans</a>
                         <a href="" class="nav-item nav-link">Swimwear</a>
                         <a href="" class="nav-item nav-link">Sleepwear</a>

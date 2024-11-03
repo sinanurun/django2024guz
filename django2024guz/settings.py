@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     #yüklenen eklentiler
     'ckeditor',
     'ckeditor_uploader',
+    'mptt',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +72,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'home.context_processors.settings',# her sayfada settings bilgisi geldin diye
+                'product.context_processors.categories', # category menusu için
             ],
         },
     },
