@@ -21,12 +21,14 @@ from django.urls import path, include
 
 
 from home import views as homeviews
+from product import views as prductviews
 urlpatterns = ([
     path('admin/', admin.site.urls),
     # uygulama pathleri
     path('home/', include('home.urls')),
     path('product/', include('product.urls')),
     path('order/', include('order.urls')),
+    path('category/<int:id>/<slug:slug>/', prductviews.categoryProducts, name='categoryProducts' ),
     # anasayfalar
     path('', homeviews.index, name='index'),
     path('contact', homeviews.contact, name='contact'),
