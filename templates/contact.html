@@ -33,25 +33,21 @@
                 <div class="contact-form">
                     <div id="success"></div>
                     <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                        {% csrf_token %}
                         <div class="control-group">
-                            <input type="text" class="form-control" id="name" placeholder="Your Name"
-                                required="required" data-validation-required-message="Please enter your name" />
+                           {{ form.name }}
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="email" class="form-control" id="email" placeholder="Your Email"
-                                required="required" data-validation-required-message="Please enter your email" />
+                           {{ form.email }}
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control" id="subject" placeholder="Subject"
-                                required="required" data-validation-required-message="Please enter a subject" />
+                            {{ form.subject }}
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <textarea class="form-control" rows="6" id="message" placeholder="Message"
-                                required="required"
-                                data-validation-required-message="Please enter your message"></textarea>
+                            {{ form.message }}
                             <p class="help-block text-danger"></p>
                         </div>
                         <div>
@@ -74,7 +70,7 @@
                 <div class="d-flex flex-column mb-3">
                     <h5 class="font-weight-semi-bold mb-3">Store 1</h5>
                     <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>{{ settings.email}}</p>
                     <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
                 </div>
                 <div class="d-flex flex-column">
