@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'product.apps.ProductConfig',
     'order.apps.OrderConfig',
     #yüklenen eklentiler
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -129,6 +131,7 @@ STATICFILES_DIRS = [
     "/var/www/static/",
 ]
 
+# STATIC_ROOT = BASE_DIR / "statics"
 
 # dosya upload işlemleri için bir yol ve dizin belirtme işlemleri aşağıda yapıldı
 MEDIA_URL = 'uploads/'
@@ -138,3 +141,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CKEDITOR_JQUERY_URL = \
+    'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/images/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+         'toolbar': 'full',#None
+    },
+}
