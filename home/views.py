@@ -39,8 +39,6 @@ def aboutus(request):
 def references(request):
     settings = Setings.objects.get(pk=1)
     metin = "BTK Kursiyerleri"
-    # return HttpResponse("Hello, %s. <br>You're at the" % metin)
-    # return HttpResponse(metin)
     context = {"sayfa": "References - Referanslar",
                'settings': settings}
     return render(request, 'references.html', context)
