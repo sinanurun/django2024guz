@@ -1,0 +1,41 @@
+{% extends 'homebase.html' %}
+{% block title %} {{ settings.title }} {% endblock %}
+{% block keywords %} {{ settings.keywords }} {% endblock %}
+{% block description %} {{ settings.description }} {% endblock %}
+{% block headBlogu %}<link href="{{ settings.icon.url }}" rel="icon">{% endblock %}
+
+
+{% block body %} 
+    
+  
+    <!-- Page Header Start -->
+    <div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Kullanıcı İşlemleri Sayfası</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a href=""></a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">{{ user }}</p>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-3 mb-5">
+                {% include 'user_panel.html' %}
+            </div>
+            <div class="col-lg-9 mb-5">
+                user alanı
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->  
+    
+    
+    
+    
+{% endblock %}
