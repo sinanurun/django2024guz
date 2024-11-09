@@ -11,8 +11,8 @@ from product.models import Product
 
 def index(request):
     slider = Product.objects.order_by('?')[:4]
-    # trandy_product = Product.objects.order_by('viewcount')[:8]
-    context = {"sayfa": "home",
+    trendy_product = Product.objects.order_by('viewcount')[:4]
+    context = {"sayfa": "home",'trendy_product':trendy_product,
                "slider": slider}
     return render(request, 'index.html', context)
 
