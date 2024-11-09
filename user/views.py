@@ -1,3 +1,34 @@
+from django.contrib import messages
+from django.contrib.auth import logout, authenticate, login
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
+from user.forms import LoginForm
+
+
 # Create your views here.
+def user_logout(request):
+    print(request.user)
+    logout(request)
+    return HttpResponseRedirect('/')
+
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username').lower()
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, 'Oturum Açma Başarılı')
+                return HttpResponseRedirect('/user/login')
+            else:
+                messages.error(request, 'Oturum Açma Başarısız')
+                return HttpResponseRedirect('/user/login')
+
+
+
+    form = LoginForm
+    context = {'form': form}
+    return render(request, 'login.html', context)
