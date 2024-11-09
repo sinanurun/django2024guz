@@ -27,6 +27,7 @@ urlpatterns = ([
     # uygulama pathleri
     path('home/', include('home.urls')),
     path('product/', include('product.urls')),
+    path('user/', include('user.urls')),
     path('order/', include('order.urls')),
     path('search/', prductviews.search, name='search'),
     path('product/<int:id>/<slug:slug>/', prductviews.productDetail, name='productDetail'),

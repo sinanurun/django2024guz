@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'product.apps.ProductConfig',
     'order.apps.OrderConfig',
+    'user.apps.UserConfig',
     #yüklenen eklentiler
     'ckeditor',
     'ckeditor_uploader',
