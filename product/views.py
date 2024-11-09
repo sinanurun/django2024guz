@@ -15,3 +15,14 @@ def categoryProducts(request,id, slug):
     context = {'urunler':urunler,
                'urunKategori':urunKategori}
     return render(request,'kategori_urunler.html',context)
+
+def productDetail(request,id, slug):
+    urun = Product.objects.get(id=id)
+    urun.viewcount = urun.viewcount + 1
+    urun.save()
+    urunKategori = Category.objects.get(pk=urun.category_id)
+    kategoriurunleri = Product.objects.filter(category_id=urun.category_id)
+    context = {'urun':urun,
+               'urunKategori':urunKategori,
+               'kategoriurunleri':kategoriurunleri}
+    return render(request,'product_detail.html',context)

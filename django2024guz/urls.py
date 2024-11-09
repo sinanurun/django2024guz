@@ -28,7 +28,9 @@ urlpatterns = ([
     path('home/', include('home.urls')),
     path('product/', include('product.urls')),
     path('order/', include('order.urls')),
+    path('product/<int:id>/<slug:slug>/', prductviews.productDetail, name='productDetail'),
     path('category/<int:id>/<slug:slug>/', prductviews.categoryProducts, name='categoryProducts' ),
+    # path('product/', include('product.urls')),
     # anasayfalar
     path('', homeviews.index, name='index'),
     path('contact', homeviews.contact, name='contact'),
