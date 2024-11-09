@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
-from product.forms import SearchForm
+from product.forms import SearchForm, CommentForm
 from product.models import Category, Product, Images
 
 
@@ -24,9 +24,10 @@ def productDetail(request,id, slug):
     images = Images.objects.filter(product_id = id)
     urunKategori = Category.objects.get(pk=urun.category_id)
     kategoriurunleri = Product.objects.filter(category_id=urun.category_id)
+    form = CommentForm
     context = {'urun':urun,'images':images,
                'urunKategori':urunKategori,
-               'kategoriurunleri':kategoriurunleri}
+               'kategoriurunleri':kategoriurunleri, 'form':form}
     return render(request,'product_detail.html',context)
 
 def search(request):

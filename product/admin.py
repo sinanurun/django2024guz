@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.utils.html import format_html
 from mptt.admin import DraggableMPTTAdmin
 
-from product.models import Category, Product, Images
+from product.models import Category, Product, Images, Comment
+
 
 # resim galerisi oluşturmak için inline yapı
 class ProductImagesInline(admin.TabularInline):
@@ -81,3 +82,7 @@ class ImageAdmin(admin.ModelAdmin):
     readonly_fields = ['image_tag',]
 
 admin.site.register(Images, ImageAdmin)
+
+class CommentAdmin(admin.ModelAdmin):
+    list_filter = ('status',)
+admin.site.register(Comment, CommentAdmin)
