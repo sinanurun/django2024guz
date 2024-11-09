@@ -1,6 +1,7 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
+from product.forms import SearchForm
 from product.models import Category, Product, Images
 
 
@@ -27,3 +28,13 @@ def productDetail(request,id, slug):
                'urunKategori':urunKategori,
                'kategoriurunleri':kategoriurunleri}
     return render(request,'product_detail.html',context)
+
+def search(request):
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = Product.objects.filter(title__icontains=query)
+            context = {'results':results}
+            return render(request, 'product_search.html', context)
+    return HttpResponseRedirect('/')
