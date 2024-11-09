@@ -203,6 +203,20 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <h4 class="mb-4">1 review for "Colorful Stylish Shirt"</h4>
+                                {% for yorum in comments %}
+                                <div class="media mb-4">
+                                    <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                    <div class="media-body">
+                                        <h6>{{ yorum.user }} - <br> {{ yorum.subject }} -<small> - <i>{{ yorum.create_at}}</i></small></h6>
+                                        <div class="text-primary mb-2">
+                                            {% for c in "a"|ljust:yorum.rate  %}
+                                            <i class="fas fa-star"></i>
+                                            {%  endfor %}
+                                        </div>
+                                        <p>{{ yorum.comment }}</p>
+                                    </div>
+                                </div>
+                                {%  endfor %}
                                 <div class="media mb-4">
                                     <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                     <div class="media-body">
