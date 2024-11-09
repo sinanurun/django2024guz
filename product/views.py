@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from product.models import Category, Product
+from product.models import Category, Product, Images
 
 
 # Create your views here.
@@ -20,9 +20,10 @@ def productDetail(request,id, slug):
     urun = Product.objects.get(id=id)
     urun.viewcount = urun.viewcount + 1
     urun.save()
+    images = Images.objects.filter(product_id = id)
     urunKategori = Category.objects.get(pk=urun.category_id)
     kategoriurunleri = Product.objects.filter(category_id=urun.category_id)
-    context = {'urun':urun,
+    context = {'urun':urun,'images':images,
                'urunKategori':urunKategori,
                'kategoriurunleri':kategoriurunleri}
     return render(request,'product_detail.html',context)
