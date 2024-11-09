@@ -129,10 +129,21 @@
                             <a href="{% url 'aboutus' %}" class="nav-item nav-link">About Us</a>
                             <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
                         </div>
-                        <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Login</a>
-                            <a href="" class="nav-item nav-link">Register</a>
+                        {% if user.id is not None %}
+                                   <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ user.username }}</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="cart.html" class="dropdown-item">Profil Sayfam</a>
+                                    <a href="checkout.html" class="dropdown-item">Sipraişlerim</a>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="navbar-nav ml-auto py-0">
+                            <a href="{% url 'user_login' %}" class="nav-item nav-link">Login</a>
+                            <a href="{% url 'user_register' %}" class="nav-item nav-link">Register</a>
                         </div>
+                        {% endif %}
+
                     </div>
                 </nav>
                 {% if sayfa == "home" %}
