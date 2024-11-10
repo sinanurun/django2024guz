@@ -63,4 +63,7 @@ def user_register(request):
     return render(request, 'register.html', context)
 
 def user_profile(request):
-    return render(request, 'user_profile.html')
+    user = request.user
+    profile = UserProfile.objects.get(user=user)
+    context = {'profile': profile}
+    return render(request, 'user_profile.html',context)
