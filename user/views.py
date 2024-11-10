@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -23,7 +24,7 @@ def user_login(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, 'Oturum Açma Başarılı')
-                return HttpResponseRedirect('/user/login')
+                return HttpResponseRedirect('/user/')
             else:
                 messages.error(request, 'Oturum Açma Başarısız')
                 return HttpResponseRedirect('/user/login')
@@ -47,12 +48,8 @@ def user_register(request):
                 # userprofili = UserProfile()
                 # userprofili.user = current_user
                 # userprofili.save()
-
-
-
-
                 messages.success(request, 'Kayıt Başarılı')
-                return HttpResponseRedirect('/user/register')
+                return HttpResponseRedirect('/user/')
             else:
                 messages.error(request, 'Kayıt Başarısız')
                 return HttpResponseRedirect('/user/register')
@@ -62,8 +59,13 @@ def user_register(request):
     context = {'form': form}
     return render(request, 'register.html', context)
 
+@login_required(login_url='/user/login/')
 def user_profile(request):
     user = request.user
     profile = UserProfile.objects.get(user=user)
     context = {'profile': profile}
     return render(request, 'user_profile.html',context)
+
+@login_required(login_url='/user/login/')
+def user_update(request):
+    pass
