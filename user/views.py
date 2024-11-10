@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
+from order.models import AddFavorite
 from user.forms import LoginForm, RegisterForm, UserUpdateForm, ProfileUpdateForm
 from user.models import UserProfile
 
@@ -60,8 +61,9 @@ def user_register(request):
     return render(request, 'register.html', context)
 
 @login_required(login_url='/user/login/')
-def user_profile(request):
+def user_profile(request, current_user=None):
     user = request.user
+
     profile = UserProfile.objects.get(user=user)
     context = {'profile': profile}
     return render(request, 'user_profile.html',context)

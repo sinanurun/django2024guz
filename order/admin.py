@@ -31,8 +31,11 @@ class OrderProductAdmin(admin.ModelAdmin):
     list_display = ['user', 'product','price','quantity','amount']
     list_filter = ['user']
 
+class FavoriteAdmin(admin.ModelAdmin):
+    list_display = ['product','user']
+    list_filter = ['product','user']
 # Register your models here.
-admin.site.register(AddFavorite)
+admin.site.register(AddFavorite,FavoriteAdmin)
 admin.site.register(Order)
 admin.site.register(OrderProduct)
 admin.site.register(ShopCart)

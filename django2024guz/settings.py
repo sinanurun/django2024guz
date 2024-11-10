@@ -74,6 +74,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'home.context_processors.settings',# her sayfada settings bilgisi geldin diye
                 'product.context_processors.categories', # category menusu için
+                'django2024guz.context_processors.favori_sorgusu',
             ],
         },
     },
