@@ -41,3 +41,10 @@ def favorites(request):
     favorites = AddFavorite.objects.filter(user=current_user)
     context = {'favorites':favorites}
     return render(request, 'favorites_products.html',context)
+
+@login_required(login_url='/login')  # Check login
+def delfavorite(request,id):
+    url = request.META.get('HTTP_REFERER')
+    current_user = request.user
+    AddFavorite.objects.filter(product_id=id, user_id=current_user.id).delete()
+    return HttpResponseRedirect(url)
