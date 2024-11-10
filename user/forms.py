@@ -51,3 +51,8 @@ class UserUpdateForm(forms.ModelForm):
             'first_name': TextInput(attrs={'class': 'input', 'placeholder': 'first_name'}),
             'last_name': TextInput(attrs={'class': 'input', 'placeholder': 'last_name'}),
         }
+
+# class MultiForm(UserUpdateForm,UserProfileForm):
+#     class Meta:
+#         model = User, user_profile
+#         fields = ('username', 'email', 'first_name', 'last_name','phone_number', 'address', 'city', 'state', 'image')

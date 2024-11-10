@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from user.forms import LoginForm, RegisterForm
+from user.forms import LoginForm, RegisterForm, UserUpdateForm, ProfileUpdateForm
 from user.models import UserProfile
 
 
@@ -68,4 +68,7 @@ def user_profile(request):
 
 @login_required(login_url='/user/login/')
 def user_update(request):
-    pass
+    user_form = UserUpdateForm(instance=request.user)
+    profile_form = ProfileUpdateForm(instance=request.user.userprofile)
+    context = {'user_form': user_form, 'profile_form':profile_form}
+    return render(request, 'user_update.html',context)
