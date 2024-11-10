@@ -4,9 +4,12 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.utils.crypto import get_random_string
 
-from order.models import AddFavorite, ShopCart
+from order.forms import ShopCartForm, OrderForm
+from order.models import AddFavorite, ShopCart, OrderProduct, Order
 from product.models import Product
+from user.models import UserProfile
 
 favori_list = []
 # Create your views here.
@@ -112,9 +115,10 @@ def addtocart(request, id):
         messages.success(request, "Product added to Shopcart")
         return HttpResponseRedirect(url)
 
+def orderproduct(request):
     current_user = request.user
     shopcart = ShopCart.objects.filter(user_id=current_user.id)
-    total = 0
+    total = 0 # fatura tutarı
     for rs in shopcart:
         total += rs.price * rs.quantity
 
