@@ -29,6 +29,7 @@ urlpatterns = ([
     path('product/', include('product.urls')),
     path('user/', include('user.urls')),
     path('order/', include('order.urls')),
+    path('api/', include('productapi.urls')),
     path('search/', prductviews.search, name='search'),
     path('product/<int:id>/<slug:slug>/', prductviews.productDetail, name='productDetail'),
     path('category/<int:id>/<slug:slug>/', prductviews.categoryProducts, name='categoryProducts' ),
