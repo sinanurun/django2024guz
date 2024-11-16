@@ -130,13 +130,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 # STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    "/var/www/static/",
-]
-
-# STATIC_ROOT = BASE_DIR / "statics"
+STATICFILES_DIRS = [BASE_DIR / "static",]
+STATIC_ROOT = BASE_DIR / "statics"
 
 # dosya upload işlemleri için bir yol ve dizin belirtme işlemleri aşağıda yapıldı
 MEDIA_URL = 'uploads/'
